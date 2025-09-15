@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arslan Bashir - Building the Future</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            color: #0a0a0a;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Geometric pattern background */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: 0;
+            background-image: 
+                repeating-linear-gradient(45deg, #000 0, #000 1px, transparent 1px, transparent 15px),
+                repeating-linear-gradient(-45deg, #000 0, #000 1px, transparent 1px, transparent 15px);
+        }
+
+        /* Animated gradient orb */
+        .gradient-orb {
+            position: fixed;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 184, 0, 0.15) 0%, rgba(255, 92, 0, 0.1) 40%, transparent 70%);
+            top: -400px;
+            right: -400px;
+            animation: orbFloat 20s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .gradient-orb2 {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 123, 255, 0.1) 0%, rgba(0, 92, 255, 0.05) 40%, transparent 70%);
+            bottom: -300px;
+            left: -300px;
+            animation: orbFloat2 25s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-100px, 100px) scale(1.1); }
+        }
+
+        @keyframes orbFloat2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(100px, -100px) scale(1.2); }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Main heading with typewriter effect */
+        h1 {
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 60px;
+            letter-spacing: -3px;
+            position: relative;
+            display: inline-block;
+            animation: slideDown 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #ff5c00, #ffb800, #007bff);
+            animation: expandWidth 1.5s ease-out 0.5s both;
+            border-radius: 4px;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Construction block with brutal design */
+        .construction-block {
+            background: #0a0a0a;
+            color: #ffffff;
+            padding: 50px;
+            margin-bottom: 40px;
+            position: relative;
+            transform: skewY(-2deg);
+            animation: slideLeft 1s ease-out 0.3s both;
+            box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .construction-block > * {
+            transform: skewY(2deg);
+        }
+
+        @keyframes slideLeft {
+            from {
+                opacity: 0;
+                transform: translateX(50px) skewY(-2deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) skewY(-2deg);
+            }
+        }
+
+        .construction-header {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #ffb800;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .construction-emoji {
+            animation: swing 2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes swing {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(10deg); }
+            75% { transform: rotate(-10deg); }
+        }
+
+        .construction-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        /* Vision card with glassmorphism */
+        .vision-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+            padding: 50px;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeUp 1s ease-out 0.6s both;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.08);
+        }
+
+        .vision-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff5c00, #ffb800, #007bff);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .vision-text {
+            font-size: 1.25rem;
+            line-height: 2;
+            color: #0a0a0a;
+            font-weight: 400;
+        }
+
+        .vision-text strong {
+            background: linear-gradient(90deg, #ff5c00, #007bff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            font-size: 1.3rem;
+        }
+
+        /* Status badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 50px;
+            padding: 20px 35px;
+            background: linear-gradient(135deg, #ff5c00, #ffb800);
+            color: white;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 1rem;
+            animation: bounce 2s ease-in-out infinite, fadeIn 1s ease-out 0.9s both;
+            box-shadow: 0 10px 40px rgba(255, 92, 0, 0.3);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .status-badge::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Decorative elements */
+        .corner-accent {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            border: 3px solid #0a0a0a;
+            z-index: 0;
+        }
+
+        .corner-accent.top-left {
+            top: 40px;
+            left: 40px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .corner-accent.bottom-right {
+            bottom: 40px;
+            right: 40px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 60px 20px;
+            }
+            
+            .construction-block {
+                padding: 35px 25px;
+                transform: skewY(0);
+            }
+            
+            .construction-block > * {
+                transform: skewY(0);
+            }
+            
+            .vision-card {
+                padding: 35px 25px;
+                border-radius: 20px;
+            }
+            
+            .corner-accent {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .corner-accent.top-left {
+                top: 20px;
+                left: 20px;
+            }
+            
+            .corner-accent.bottom-right {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background elements -->
+    <div class="bg-pattern"></div>
+    <div class="gradient-orb"></div>
+    <div class="gradient-orb2"></div>
+    
+    <!-- Decorative corners -->
+    <div class="corner-accent top-left"></div>
+    <div class="corner-accent bottom-right"></div>
+    
+    <div class="container">
+        <h1><strong>Arslan Bashir</strong></h1>
+        
+        <div class="construction-block">
+            <div class="construction-header">
+                <span class="construction-emoji">🚧</span>
+                Work in Progress
+                <span class="construction-emoji">🚧</span>
+            </div>
+            <div class="construction-text">
+                I just reserved my spot on the internet. Big things are coming soon.<br><br>
+                For now, you can think of this page as the construction site for my future empire.
+            </div>
+        </div>
+        
+        <div class="vision-card">
+            <div class="vision-text">
+                This is the start of my story.<br><br>
+                I believe in <strong>building</strong>, <strong>failing</strong>, <strong>learning</strong>, and <strong>growing</strong> until I become the richest man in the world.<br><br>
+                This website will one day showcase my companies, my work, and my journey.<br><br>
+                For now, it's just the seed — and you're seeing it before it grows.
+            </div>
+        </div>
+        
+        <div class="status-badge">
+            Building Something Revolutionary
+        </div>
+    </div>
+
+    <script>
+        // Dynamic color shift on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            // Move gradient orbs slightly based on mouse position
+            const orb1 = document.querySelector('.gradient-orb');
+            const orb2 = document.querySelector('.gradient-orb2');
+            
+            if (orb1) {
+                orb1.style.transform = `translate(${x * 30}px, ${y * 30}px)`;
+            }
+            if (orb2) {
+                orb2.style.transform = `translate(${-x * 30}px, ${-y * 30}px)`;
+            }
+        });
+
+        // Add intersection observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.construction-block, .vision-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
